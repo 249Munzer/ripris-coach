@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">RepRise Coach</string>
+    <string name="title_activity_main">RepRise Coach</string>
+    <string name="package_name">com.reprise.coach</string>
+    <string name="custom_url_scheme">com.reprise.coach</string>
+</resources>
