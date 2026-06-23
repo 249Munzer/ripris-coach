@@ -219,65 +219,65 @@ export default function DashboardView({
       </div>
 
       {/* Grid of Key Statistics Card */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" id="stats-grid">
-        <div className="bg-[#101010] border border-neutral-800/80 rounded-2xl p-4 flex flex-col justify-between space-y-4" id="stat-card-clients">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4" id="stats-grid">
+        <div className="bg-[#101010] border border-neutral-800/80 rounded-2xl p-3.5 sm:p-4 flex flex-col justify-between min-h-[110px] sm:min-h-[120px]" id="stat-card-clients">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-widest">{t.clients}</span>
-            <div className="p-2 h-9 w-9 bg-[#FF4D00]/10 rounded-xl flex items-center justify-center text-[#FF4D00]">
-              <Users className="w-5 h-5" />
+            <span className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-widest">{t.clients}</span>
+            <div className="p-1.5 sm:p-2 h-7 w-7 sm:h-9 sm:w-9 bg-[#FF4D00]/10 rounded-xl flex items-center justify-center text-[#FF4D00]">
+              <Users className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
           <div>
-            <h3 className="text-3xl font-bold text-white">{clients.length}</h3>
-            <div className="flex items-center gap-1 text-xs text-[#16C47F] mt-1">
-              <span>{activeClients.length}</span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white leading-none">{clients.length}</h3>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-y-0.5 sm:gap-x-1 text-[11px] sm:text-xs text-[#16C47F] mt-1.5">
+              <span className="font-bold sm:font-semibold">{activeClients.length}</span>
               <span className="text-neutral-500">{t.active}</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-[#101010] border border-neutral-800/80 rounded-2xl p-4 flex flex-col justify-between space-y-4" id="stat-card-inbody">
+        <div className="bg-[#101010] border border-neutral-800/80 rounded-2xl p-3.5 sm:p-4 flex flex-col justify-between min-h-[110px] sm:min-h-[120px]" id="stat-card-inbody">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-widest">{t.inbody}</span>
-            <div className="p-2 h-9 w-9 bg-[#16C47F]/10 rounded-xl flex items-center justify-center text-[#16C47F]">
-              <Scale className="w-5 h-5" />
+            <span className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-widest">{t.inbody}</span>
+            <div className="p-1.5 sm:p-2 h-7 w-7 sm:h-9 sm:w-9 bg-[#16C47F]/10 rounded-xl flex items-center justify-center text-[#16C47F]">
+              <Scale className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
           <div>
-            <h3 className="text-3xl font-bold text-white">{inbody.length}</h3>
-            <div className="flex items-center gap-1 text-xs text-neutral-400 mt-1">
-              <span>{avgPbf}%</span>
-              <span>{t.bodyFatMass} (Avg)</span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white leading-none">{inbody.length}</h3>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-y-0.5 sm:gap-x-1 text-[11px] sm:text-xs text-neutral-400 mt-1.5">
+              <span className="font-bold sm:font-semibold text-[#16C47F]">{avgPbf}%</span>
+              <span className="truncate">{t.bodyFatMass} (Avg)</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-[#101010] border border-neutral-800/80 rounded-2xl p-4 flex flex-col justify-between space-y-4" id="stat-card-compliance">
+        <div className="bg-[#101010] border border-neutral-800/80 rounded-2xl p-3.5 sm:p-4 flex flex-col justify-between min-h-[110px] sm:min-h-[120px]" id="stat-card-compliance">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-widest">{t.compliance}</span>
-            <div className="p-2 h-9 w-9 bg-yellow-500/10 rounded-xl flex items-center justify-center text-yellow-500">
-              <CheckCircle className="w-5 h-5" />
+            <span className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-widest">{t.compliance}</span>
+            <div className="p-1.5 sm:p-2 h-7 w-7 sm:h-9 sm:w-9 bg-yellow-500/10 rounded-xl flex items-center justify-center text-yellow-500">
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
           <div>
-            <h3 className="text-3xl font-bold text-white">{totalVolumeProgress}%</h3>
-            <div className="flex items-center gap-1 text-xs text-yellow-500 mt-1">
-              <span>{lang === 'en' ? 'Target: >90%' : 'الهدف الأساسي: >90%'}</span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white leading-none">{totalVolumeProgress}%</h3>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-y-0.5 sm:gap-x-1 text-[11px] sm:text-xs text-yellow-500 mt-1.5">
+              <span className="truncate">{lang === 'en' ? 'Target: >90%' : 'الهدف الأساسي: >90%'}</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-[#101010] border border-neutral-800/80 rounded-2xl p-4 flex flex-col justify-between space-y-4" id="stat-card-reviews">
+        <div className="bg-[#101010] border border-neutral-800/80 rounded-2xl p-3.5 sm:p-4 flex flex-col justify-between min-h-[110px] sm:min-h-[120px]" id="stat-card-reviews">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-widest">{t.pendingReviews}</span>
-            <div className="p-2 h-9 w-9 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-400">
-              <Sparkles className="w-5 h-5" />
+            <span className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-widest">{t.pendingReviews}</span>
+            <div className="p-1.5 sm:p-2 h-7 w-7 sm:h-9 sm:w-9 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-400">
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
           <div>
-            <h3 className="text-3xl font-bold text-white">{clients.length > 0 ? '0' : '1'}</h3>
-            <div className="flex items-center gap-1 text-xs text-neutral-400 mt-1">
-              <span>{lang === 'en' ? 'Auto-scheduled' : 'مجدولة تلقائياً'}</span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white leading-none">{clients.length > 0 ? '0' : '1'}</h3>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-y-0.5 sm:gap-x-1 text-[11px] sm:text-xs text-neutral-400 mt-1.5">
+              <span className="truncate">{lang === 'en' ? 'Auto-scheduled' : 'مجدولة تلقائياً'}</span>
             </div>
           </div>
         </div>

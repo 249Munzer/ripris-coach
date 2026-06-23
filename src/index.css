@@ -18,6 +18,21 @@ body {
   /* Support status bar and home indicator paddings */
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
+  /* Prevent horizontal overflow scrolling */
+  overflow-x: hidden;
+}
+
+/* Fix Arabic text letter joining by completely overriding letter-spacing (tracking) */
+html[lang="ar"] *,
+[dir="rtl"] *,
+.lang-ar * {
+  letter-spacing: normal !important;
+}
+
+/* Ensure stable layout without layout shift when scrollbars are toggled on mobile/desktop */
+#router-container-canvas,
+.overflow-y-auto {
+  scrollbar-gutter: stable;
 }
 
 /* Allow normal text selection inside input fields, textareas, or editable elements */
