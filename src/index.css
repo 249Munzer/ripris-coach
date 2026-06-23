@@ -11,6 +11,18 @@ body {
   background-color: #050505;
   color: #ffffff;
   font-family: var(--font-sans);
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  /* Support status bar and home indicator paddings */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Allow normal text selection inside input fields, textareas, or editable elements */
+input, textarea, select, [contenteditable="true"] {
+  user-select: text;
 }
 
 .font-display {
