@@ -1,0 +1,267 @@
+{
+  "entities": {
+    "CoachProfile": {
+      "title": "CoachProfile",
+      "description": "Exclusive profile of the trainer",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the coach" },
+        "name": { "type": "string", "description": "Display name of the coach" },
+        "email": { "type": "string", "description": "Registered email of the coach" },
+        "gymName": { "type": "string", "description": "Name of the gym or physical suite" },
+        "registered": { "type": "boolean", "description": "Registration completion state" },
+        "subscription": { "type": "string", "enum": ["Free", "Pro", "Elite"], "description": "Current authorization tier" }
+      },
+      "required": ["id", "name", "email", "gymName", "registered", "subscription"]
+    },
+    "Client": {
+      "title": "Client",
+      "description": "Athletic profiles of active participants",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "gender": { "type": "string", "enum": ["male", "female"] },
+        "age": { "type": "integer" },
+        "height": { "type": "number", "description": "Height in cm" },
+        "weight": { "type": "number", "description": "Weight in kg" },
+        "goal": { "type": "string" },
+        "experience": { "type": "string", "enum": ["beginner", "intermediate", "advanced"] },
+        "activity": { "type": "string", "enum": ["sedentary", "light", "moderate", "active", "extremely_active"] },
+        "gymAccess": { "type": "string", "enum": ["gym", "home", "hybrid"] },
+        "equipment": { "type": "array", "items": { "type": "string" } },
+        "trainingDays": { "type": "integer" },
+        "workoutDuration": { "type": "integer" },
+        "injuries": { "type": "string" },
+        "limitations": { "type": "string" },
+        "medicalNotes": { "type": "string" },
+        "sleep": { "type": "string", "enum": ["poor", "average", "good"] },
+        "stress": { "type": "string", "enum": ["low", "medium", "high"] },
+        "notes": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "status": { "type": "string"},
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "gender", "age", "height", "weight", "goal", "status", "createdAt"]
+    },
+    "InBodyRecord": {
+      "title": "InBodyRecord",
+      "description": "Body composition tracking measurements",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "weight": { "type": "number" },
+        "smm": { "type": "number" },
+        "bodyFat": { "type": "number" },
+        "pbf": { "type": "number" },
+        "bmi": { "type": "number" },
+        "bmr": { "type": "number" },
+        "visceralFat": { "type": "integer" },
+        "ecwTbw": { "type": "number" },
+        "whr": { "type": "number" },
+        "fatControl": { "type": "number" },
+        "muscleControl": { "type": "number" },
+        "interpretation": { "type": "string" }
+      },
+      "required": ["id", "clientId", "date", "weight"]
+    },
+    "WorkoutPlan": {
+      "title": "WorkoutPlan",
+      "description": "Dynamic structural multi-week plans",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "name": { "type": "string" },
+        "templateType": { "type": "string" },
+        "weeks": { "type": "integer" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "clientId", "name", "weeks", "createdAt"]
+    },
+    "NutritionPlan": {
+      "title": "NutritionPlan",
+      "description": "Caloric and macronutrient distribution plans",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "bmr": { "type": "number" },
+        "tdee": { "type": "number" },
+        "calories": { "type": "number" },
+        "mealTiming": { "type": "string" },
+        "mealCount": { "type": "integer" },
+        "dietStyle": { "type": "string" },
+        "allergies": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "clientId", "calories", "createdAt"]
+    },
+    "ProgressLog": {
+      "title": "ProgressLog",
+      "description": "Timeline log representing client progression metrics",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "date": { "type": "string" },
+        "weight": { "type": "number" },
+        "complianceRate": { "type": "number" },
+        "coachNotes": { "type": "string" }
+      },
+      "required": ["id", "clientId", "date", "weight", "complianceRate"]
+    },
+    "TimelineEntry": {
+      "title": "TimelineEntry",
+      "description": "Interactive chronometer records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "type": { "type": "string" },
+        "icon": { "type": "string" },
+        "summary": { "type": "string" },
+        "summaryAr": { "type": "string" },
+        "category": { "type": "string" }
+      },
+      "required": ["id", "clientId", "date", "time", "type", "summary", "category"]
+    },
+    "CoachNote": {
+      "title": "CoachNote",
+      "description": "Targeted text logs for clients",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "date": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "category": { "type": "string" },
+        "isPinned": { "type": "boolean" },
+        "isPriority": { "type": "boolean" },
+        "isFavorite": { "type": "boolean" },
+        "isArchived": { "type": "boolean" }
+      },
+      "required": ["id", "clientId", "title", "content", "date", "createdAt"]
+    },
+    "WeeklyCheckIn": {
+      "title": "WeeklyCheckIn",
+      "description": "Weekly physiological feedback",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "date": { "type": "string" },
+        "weight": { "type": "number" },
+        "mood": { "type": "integer" },
+        "energy": { "type": "integer" },
+        "sleepHours": { "type": "number" },
+        "sleepQuality": { "type": "integer" },
+        "stress": { "type": "integer" },
+        "recovery": { "type": "integer" },
+        "hunger": { "type": "integer" },
+        "digestion": { "type": "integer" },
+        "steps": { "type": "integer" },
+        "workoutAdherence": { "type": "integer" },
+        "nutritionAdherence: ": { "type": "integer" }
+      },
+      "required": ["id", "clientId", "date", "weight"]
+    },
+    "SmartAlert": {
+      "title": "SmartAlert",
+      "description": "Safety alarms warning about non-compliance or abnormal metrics",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "clientName": { "type": "string" },
+        "date": { "type": "string" },
+        "type": { "type": "string" },
+        "priority": { "type": "string" },
+        "category": { "type": "string" },
+        "title": { "type": "string" },
+        "titleAr": { "type": "string" },
+        "description": { "type": "string" },
+        "descriptionAr": { "type": "string" },
+        "suggestedAction": { "type": "string" },
+        "suggestedActionAr": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "clientId", "clientName", "date", "type", "priority", "category", "title", "titleAr", "status"]
+    },
+    "ClientGoal": {
+      "title": "ClientGoal",
+      "description": "Target accomplishments set by coach",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "nameAr": { "type": "string" },
+        "targetValue": { "type": "number" },
+        "startValue": { "type": "number" },
+        "currentValue": { "type": "number" },
+        "unit": { "type": "string" },
+        "startDate": { "type": "string" },
+        "targetDate": { "type": "string" },
+        "status": { "type": "string" },
+        "completionRate": { "type": "number" }
+      },
+      "required": ["id", "clientId", "type", "name", "nameAr", "targetValue", "startValue", "currentValue", "startDate", "targetDate", "status", "completionRate"]
+    }
+  },
+  "firestore": {
+    "coaches/{coachId}": {
+      "schema": "CoachProfile",
+      "description": "Coach credential profile holding authentication and tier level info"
+    },
+    "coaches/{coachId}/clients/{clientId}": {
+      "schema": "Client",
+      "description": "Athletic profiles of participants enrolled with the coach"
+    },
+    "coaches/{coachId}/clients/{clientId}/inbodyRecords/{recordId}": {
+      "schema": "InBodyRecord",
+      "description": "InBody segmental composition records for regional muscle/fat progression tracking"
+    },
+    "coaches/{coachId}/clients/{clientId}/workoutPlans/{planId}": {
+      "schema": "WorkoutPlan",
+      "description": "Highly custom multi-week periodized programs"
+    },
+    "coaches/{coachId}/clients/{clientId}/nutritionPlans/{planId}": {
+      "schema": "NutritionPlan",
+      "description": "Nutrient distribution, meal profiles, allergies and grocery items schedules"
+    },
+    "coaches/{coachId}/clients/{clientId}/progressLogs/{logId}": {
+      "schema": "ProgressLog",
+      "description": "Physiological progress markers including photos, weights, compliance ratios and notes"
+    },
+    "coaches/{coachId}/clients/{clientId}/timelineEntries/{entryId}": {
+      "schema": "TimelineEntry",
+      "description": "Milestone activity events"
+    },
+    "coaches/{coachId}/clients/{clientId}/coachNotes/{noteId}": {
+      "schema": "CoachNote",
+      "description": "Custom coaching notes with status pinning, priorities and categories"
+    },
+    "coaches/{coachId}/clients/{clientId}/weeklyCheckins/{checkinId}": {
+      "schema": "WeeklyCheckIn",
+      "description": "Physiological feedback reviews"
+    },
+    "coaches/{coachId}/clients/{clientId}/smartAlerts/{alertId}": {
+      "schema": "SmartAlert",
+      "description": "Biofeedback warning signals regarding client trends"
+    },
+    "coaches/{coachId}/clients/{clientId}/clientGoals/{goalId}": {
+      "schema": "ClientGoal",
+      "description": "Active goals regarding body recomposition and fitness markers"
+    }
+  }
+}

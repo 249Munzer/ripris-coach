@@ -1,0 +1,6 @@
+{
+  "name": "RepRise Coach",
+  "description": "A standalone premium coaching platform for personal trainers, online coaches, and fitness professionals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
